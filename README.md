@@ -1,9 +1,9 @@
-#📝 Notey AI
+# Notey AI
 Live Demo: https://notey-ai-project.firebaseapp.com/
 
 An AI-integrated note-taking application built with Angular 18 and Firebase. This project demonstrates full-stack capabilities including real-time data streaming, secure authentication, and modern UI state management.
 
-🚀 Technical Challenges & Solutions
+## Technical Challenges & Solutions
 1. Secure User Authentication
 The Problem: Implementing a robust login system that persists user sessions across refreshes without manual token handling.
 
@@ -19,7 +19,7 @@ The Problem: Encountered issues where the Angular view wouldn't update immediate
 
 The Solution: Optimized the rendering cycle using NgZone and ChangeDetectorRef. By explicitly wrapping external Firebase triggers within Angular’s "Zone," I ensured the UI reflects data changes instantly without requiring a page reload.
 
-🛠️ Tech Stack
+### Tech Stack
 - Frontend: Angular 18 (Signals, Standalone Components)
 
 - Backend/BaaS: Firebase Auth & Cloud Firestore
