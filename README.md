@@ -1,61 +1,29 @@
-# Frontend
+#📝 Notey AI
+Live Demo: https://notey-ai-project.firebaseapp.com/
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+An AI-integrated note-taking application built with Angular 18 and Firebase. This project demonstrates full-stack capabilities including real-time data streaming, secure authentication, and modern UI state management.
 
-## Development server
-To preview it live on your browser check this link: 
-https://notey-ai-project.firebaseapp.com/
+🚀 Technical Challenges & Solutions
+1. Secure User Authentication
+The Problem: Implementing a robust login system that persists user sessions across refreshes without manual token handling.
 
-To start a local development server, run:
+The Solution: Integrated Firebase Authentication. This allowed for secure Google/Email sign-on and provided a unique UID for every user, ensuring data privacy between different accounts.
 
-```bash
-ng serve
-```
+2. Real-time CRUD Operations
+The Problem: Managing Create, Read, Update, and Delete operations while keeping the local UI in sync with the database.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The Solution: Leveraged Cloud Firestore. By using Firestore's NoSQL structure, I implemented efficient data models for notes. This moved the app from static data to a persistent, cloud-based backend.
 
-## Code scaffolding
+3. Dynamic UI Updates in Angular
+The Problem: Encountered issues where the Angular view wouldn't update immediately after asynchronous Firebase operations finished (Change Detection issues).
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The Solution: Optimized the rendering cycle using NgZone and ChangeDetectorRef. By explicitly wrapping external Firebase triggers within Angular’s "Zone," I ensured the UI reflects data changes instantly without requiring a page reload.
 
-```bash
-ng generate component component-name
-```
+🛠️ Tech Stack
+- Frontend: Angular 18 (Signals, Standalone Components)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Backend/BaaS: Firebase Auth & Cloud Firestore
 
-```bash
-ng generate --help
-```
+- Deployment: Firebase Hosting
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Styling: Tailwind CSS
