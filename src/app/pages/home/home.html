@@ -1,0 +1,102 @@
+<nav class="flex gap-5 p-4 justify-center md:justify-center">
+  <span routerLink="/" class="font-medium cursor-pointer">📝Notey AI </span>
+  <a routerLink="/home" class="hover:underline hover:text-blue-700 hover:font-medium">Home</a>
+  <a routerLink="/login" class="hover:underline hover:text-blue-700 hover:font-medium">Login</a>
+  <a routerLink="/notes" class="hover:underline hover:text-blue-700 hover:font-medium">Notes</a>
+  <a routerLink="/jokes" class="hover:underline hover:text-blue-700 hover:font-medium">Jokes</a>
+</nav>
+<div>
+  <div class="bg-blue-200 h-full flex justify-center items-center p-5">
+    <div class="lg:max-w-[70rem]">
+      <div class="home-title my-3 p-3">
+        <h1 class="text-2xl lg:text-4xl text-center my-2">Welcome to Notey AI project</h1>
+        <p>
+          Notei AI is a lightweight web application designed to streamline digital organization
+          while showcasing the power of real-time data fetching. Built with a focus on speed and
+          simplicity, the platform allows users to capture ideas instantly and interact with
+          external data through various custom API integrations.
+        </p>
+      </div>
+
+      <div class="cards grid lg:grid-cols-2 lg:grid-rows-2 gap-5">
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title>
+              <p>User Profile</p>
+            </mat-card-title>
+            <mat-card-subtitle>
+              <p>All about you</p>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="w-10 h-10 rounded-full bg-gray-500"></div>
+
+            <p>
+              View your account security settings, update your personal profile information, and
+              customize how you interact with the Notei AI platform.
+            </p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title>
+              <p>Notes</p>
+            </mat-card-title>
+            <mat-card-subtitle>
+              <p>Capture ideas instantly</p>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              Create, store, and categorize your digital notes using AI-driven tools designed to
+              keep your ideas structured and easy to find.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button matButton="filled" routerLink="/notes">Take Notes</button>
+          </mat-card-actions>
+        </mat-card>
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title>
+              <p>About the Developer</p>
+            </mat-card-title>
+            <mat-card-subtitle>
+              <p>The story behind the code</p>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <img
+              class="w-20 h-20 rounded-full object-cover object-center"
+              src="images/dev.jpg"
+              alt="Christian George"
+            />
+            <p>
+              Learn about the developer’s journey, the technical stack used for this project, and
+              the creative vision driving Notei AI forward.
+            </p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title>
+              <p>FUN APIs</p>
+            </mat-card-title>
+            <mat-card-subtitle>
+              <p>See what else this app can do</p>
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              Learn about the developer’s journey, the technical stack used for this project, and
+              the creative vision driving Notei AI forward.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button matButton="elevated" routerLink="/jokes">Try It</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

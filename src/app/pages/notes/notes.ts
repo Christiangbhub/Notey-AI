@@ -4,7 +4,7 @@ import { collection, doc, setDoc, query, orderBy, onSnapshot, QuerySnapshot, del
 import { auth, db } from '../../firebase'; // Import your exported Auth instance
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Data, RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { onAuthStateChanged } from 'firebase/auth';
 import { NgZone } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
+import { DataService } from '../../data-service';
 
 
 interface Note {
@@ -21,12 +22,17 @@ interface Note {
   content: string;
   createdAt: Date;
 }
+
+
+
+
 @Component({
   selector: 'app-notes',
   imports: [FormsModule, RouterModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatIconModule, CommonModule, DatePipe],
   templateUrl: './notes.html',
   styleUrl: './notes.css',
 })
+
 export class Notes implements OnInit, OnDestroy {
   noteTitle: string = '';
   noteContent: string = '';
@@ -35,10 +41,16 @@ export class Notes implements OnInit, OnDestroy {
   userStatus: Boolean = false;
   isEditing: Boolean = false
   editId: string | null = ""
+
+
+
+
   // // Variable to store the unsubscribe function from onSnapshot
   private unsubscribeNotes: (() => void) | undefined;
 
-  constructor(private zone: NgZone, private cdr: ChangeDetectorRef) { }
+  constructor(private zone: NgZone, private cdr: ChangeDetectorRef,
+    private data: DataService
+  ) { }
 
   ngOnInit() {
     // Start listening for notes when the component loads
@@ -124,6 +136,10 @@ export class Notes implements OnInit, OnDestroy {
   }
 
 
+
+
+
+
   fetchNotes() {
     const user = auth.currentUser;
     // if user is not logged in
@@ -156,10 +172,12 @@ export class Notes implements OnInit, OnDestroy {
 
       // Update the component's state array with the new data
 
+
       this.zone.run(() => {
         this.notes = [...fetchedNotes];
-        this.cdr.detectChanges();
       })
+      this.cdr.detectChanges();
+
 
 
       console.log("Notes updated in real-time:", this.notes.length);
@@ -187,6 +205,7 @@ export class Notes implements OnInit, OnDestroy {
       await deleteDoc(notesDocRef)
       this.zone.run(() => {
         console.log("user deleted note");
+        this.cdr.detectChanges()
       });
 
 
@@ -199,17 +218,7 @@ export class Notes implements OnInit, OnDestroy {
   async editNote(id: string, note: Note) {
     this.isEditing = true
     this.editId = id;
-    // const user = auth.currentUser;
 
-    // // if user is not logged in
-    // if (!user) {
-    //   console.log("Cannot fetch notes: No user signed in.");
-    //   return;
-    // }
-
-    // if (user) {
-    //   this.userStatus = true;
-    // }
 
     // Use the ID from your HTML section
     const element = document.getElementById('create-note-section');
@@ -219,25 +228,6 @@ export class Notes implements OnInit, OnDestroy {
     this.noteTitle = note.title
     this.noteContent = note.content
 
-    // const noteId = id;
-    // const notesDocRef = doc(db, `users/${user.uid}/notes/${noteId}`);
-
-
-    // const noteData = {
-    //   title: this.noteTitle,
-    //   content: this.noteContent,
-    // };
-
-    // try {
-    //   await updateDoc(notesDocRef, noteData)
-    //   this.zone.run(() => {
-    //     console.log("user updated note")
-    //   });
-
-    // } catch (error) {
-    //   console.log(error);
-
-    // }
 
 
 
