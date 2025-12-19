@@ -1,6 +1,5 @@
-<nav class="flex gap-5 p-4 justify-center md:justify-center">
-  <span routerLink="/" class="font-medium cursor-pointer">📝Notey AI </span>
-  <a routerLink="/home" class="hover:underline hover:text-blue-700 hover:font-medium">Home</a>
+<nav class="flex gap-5 p-4 justify-center md:justify-center text-base">
+  <span routerLink="/home" class="font-medium cursor-pointer">📝Notey AI </span>
   <a routerLink="/login" class="hover:underline hover:text-blue-700 hover:font-medium">Login</a>
   <a routerLink="/notes" class="hover:underline hover:text-blue-700 hover:font-medium">Notes</a>
   <a routerLink="/jokes" class="hover:underline hover:text-blue-700 hover:font-medium">Jokes</a>
@@ -9,8 +8,10 @@
   <div class="bg-blue-200 h-full flex justify-center items-center p-5">
     <div class="lg:max-w-[70rem]">
       <div class="home-title my-3 p-3">
-        <h1 class="text-2xl lg:text-4xl text-center my-2">Welcome to Notey AI project</h1>
-        <p>
+        <h1 class="text-2xl font-medium lg:text-4xl text-center my-2">
+          Welcome to Notey AI project
+        </h1>
+        <p class="text-base">
           Notei AI is a lightweight web application designed to streamline digital organization
           while showcasing the power of real-time data fetching. Built with a focus on speed and
           simplicity, the platform allows users to capture ideas instantly and interact with
@@ -18,7 +19,7 @@
         </p>
       </div>
 
-      <div class="cards grid lg:grid-cols-2 lg:grid-rows-2 gap-5">
+      <div class="cards grid md:grid-cols-2 md:grid-rows-2 gap-5">
         <mat-card class="card">
           <mat-card-header>
             <mat-card-title>
@@ -31,7 +32,7 @@
           <mat-card-content>
             <div class="w-10 h-10 rounded-full bg-gray-500"></div>
 
-            <p>
+            <p class="text-base">
               View your account security settings, update your personal profile information, and
               customize how you interact with the Notei AI platform.
             </p>
@@ -47,7 +48,7 @@
             </mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
-            <p>
+            <p class="text-base">
               Create, store, and categorize your digital notes using AI-driven tools designed to
               keep your ideas structured and easy to find.
             </p>
@@ -71,7 +72,7 @@
               src="images/dev.jpg"
               alt="Christian George"
             />
-            <p>
+            <p class="text-base">
               Learn about the developer’s journey, the technical stack used for this project, and
               the creative vision driving Notei AI forward.
             </p>
@@ -87,7 +88,7 @@
             </mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
-            <p>
+            <p class="text-base">
               Learn about the developer’s journey, the technical stack used for this project, and
               the creative vision driving Notei AI forward.
             </p>

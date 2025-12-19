@@ -29,7 +29,7 @@ export class Login {
       .then(() => {
         // alert('Login successful!');
         setTimeout(() => {
-          this.router.navigate(['/notes']);
+          this.router.navigate(['/home']);
         }, 1000);
       })
       .catch((err) => {

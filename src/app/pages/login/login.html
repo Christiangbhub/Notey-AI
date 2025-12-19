@@ -1,64 +1,47 @@
 <div class="bg-blue-300 w-full h-full flex flex-col items-center justify-center">
-    <div class="login-form  bg-white   gap-1 shadow-lg w-1/2 mx-auto p-4 rounded-lg">
-      <h1 class="text-3xl text-center font-bold mb-6">Login Form</h1>
-    
-    
-      <form class="example-form">
-        <!-- Email -->
-        <mat-form-field class="example-full-width mb-4">
-          <mat-label>Email</mat-label>
-    
-          <input
-            matInput
-            placeholder="Ex. email.com"
-            [(ngModel)]="email"
-            required
-            type="email"
-            name="email"
-          /><mat-icon>mail</mat-icon>
-        </mat-form-field>
-    
-        <!-- Password -->
-        <mat-form-field class="example-full-width mb-4">
-          <mat-label>Password</mat-label>
-          <input
-            matInput
-            [type]="hide ? 'password' : 'text'"
-            placeholder="Ex. ********"
-            [(ngModel)]="password"
-            required
-            name="password"
-          /><mat-icon>lock</mat-icon>
-          <button
-            mat-icon-button
-            matSuffix
-            type="button"
-            (click)="hide = !hide"
-          >
-            <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-          </button>
-        </mat-form-field>
-    
-        <!-- Login button -->
-        <button
-          matButton="filled"
-          color="primary"
-          class="w-full"
-          type="button"
-          (click)="onLogin()"
-        >
-          Login
-        </button>
+  <div class="login-form bg-white gap-1 shadow-lg w-full md:w-1/2 mx-auto p-4 rounded-lg">
+    <h1 class="text-3xl text-center font-bold mb-6">Login Form</h1>
 
-        <!-- create user button -->
-         <button
-          matButton="outlined"
-          class="w-full my-3"
-          type="button"
-          (click)="onCreateUser()"
-        >
-          Create User
+    <form class="example-form">
+      <!-- Email -->
+      <mat-form-field class="example-full-width mb-4">
+        <mat-label>Email</mat-label>
+
+        <input
+          matInput
+          placeholder="Ex. email.com"
+          [(ngModel)]="email"
+          required
+          type="email"
+          name="email"
+        /><mat-icon>mail</mat-icon>
+      </mat-form-field>
+
+      <!-- Password -->
+      <mat-form-field class="example-full-width mb-4">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          placeholder="Ex. ********"
+          [(ngModel)]="password"
+          required
+          name="password"
+        /><mat-icon>lock</mat-icon>
+        <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
-      </form>
-    </div>
+      </mat-form-field>
+
+      <!-- Login button -->
+      <button matButton="filled" color="primary" class="w-full" type="button" (click)="onLogin()">
+        Login
+      </button>
+
+      <!-- create user button -->
+      <button matButton="outlined" class="w-full my-3" type="button" (click)="onCreateUser()">
+        Create User
+      </button>
+    </form>
+  </div>
 </div>

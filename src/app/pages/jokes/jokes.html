@@ -1,25 +1,23 @@
-<nav class="flex gap-5 p-4 justify-center md:justify-center">
-  <span routerLink="/" class="font-medium cursor-pointer ">📝Notey AI  </span>
-   <a routerLink="/home" class="hover:underline hover:text-blue-700 hover:font-medium">Home</a>
-    <a routerLink="/login" class="hover:underline hover:text-blue-700 hover:font-medium">Login</a>
-    <a routerLink="/notes" class="hover:underline hover:text-blue-700 hover:font-medium">Notes</a>
-    <a routerLink="/jokes" class="hover:underline hover:text-blue-700 hover:font-medium">Jokes</a>
-  </nav>
+<nav class="flex gap-5 p-4 justify-center md:justify-center text-base">
+  <span routerLink="/home" class="font-medium cursor-pointer">📝Notey AI </span>
+  <a routerLink="/login" class="hover:underline hover:text-blue-700 hover:font-medium">Login</a>
+  <a routerLink="/notes" class="hover:underline hover:text-blue-700 hover:font-medium">Notes</a>
+  <a routerLink="/jokes" class="hover:underline hover:text-blue-700 hover:font-medium">Jokes</a>
+</nav>
 
-<div class="api-calls p-4  mx-auto bg-blue-100 h-[100vh] w-[100%] flex items-center justify-center">
-    <div class="lg:max-w-xl text-center lg:text-start">
-        <div style="font-size: 10rem;">🤣</div>
-        <h2 class="text-lg font-bold my-3">Random Joke api</h2>
-        <button matButton="elevated" class="my-3" (click)="fetchJoke()">Get a Random joke</button>
-        @if (joke) {
-          <mat-card>
-            <mat-card-content>
-              <p >{{ joke.setup}} ... <strong>{{joke.punchline}}</strong></p>
-            </mat-card-content>
-          </mat-card>
-        }
-    </div>
-  
-  
-  
+<div class="api-calls p-4 mx-auto bg-blue-100 h-full w-[100%] flex items-center justify-center">
+  <div class="lg:max-w-xl text-center">
+    <div style="font-size: 10rem">🤣</div>
+    <h2 class="text-lg font-bold my-3">Random Joke api</h2>
+    <button matButton="elevated" class="my-3" (click)="fetchJoke()">Get a Random joke</button>
+    @if (joke) {
+    <mat-card>
+      <mat-card-content>
+        <p>
+          {{ joke.setup }} ... <strong>{{ joke.punchline }}</strong>
+        </p>
+      </mat-card-content>
+    </mat-card>
+    }
   </div>
+</div>

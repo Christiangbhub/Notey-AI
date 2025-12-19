@@ -1,84 +1,66 @@
-<nav class="flex gap-5 p-4 justify-center md:justify-center">
-  <span routerLink="/" class="font-medium cursor-pointer ">📝Notey AI  </span>
-    <a routerLink="/home" class="hover:underline hover:text-blue-700 hover:font-medium">Home</a>
-    <a routerLink="/login" class="hover:underline hover:text-blue-700 hover:font-medium">Login</a>
-    <a routerLink="/notes" class="hover:underline hover:text-blue-700 hover:font-medium">Notes</a>
-    <a routerLink="/jokes" class="hover:underline hover:text-blue-700 hover:font-medium">Jokes</a>
-  </nav>
+<nav class="flex gap-5 p-4 justify-center md:justify-center text-base">
+  <span routerLink="/home" class="font-medium cursor-pointer">📝Notey AI </span>
+  <a routerLink="/login" class="hover:underline hover:text-blue-700 hover:font-medium">Login</a>
+  <a routerLink="/notes" class="hover:underline hover:text-blue-700 hover:font-medium">Notes</a>
+  <a routerLink="/jokes" class="hover:underline hover:text-blue-700 hover:font-medium">Jokes</a>
+</nav>
 <div class="bg-blue-100 flex justify-center flex-wrap sm:h-fit lg:h-full items-center p-5">
-  
-  
-  
-  
-  
-  
-  
-  <section id="create-note-section" >
-    <div *ngIf="userStatus === false" style="padding: 20px; text-align: center;">
-      <p>User is not logged in</p>
+  <section id="create-note-section" class="my-10 flex items-center justify-center">
+    <div *ngIf="userStatus === false" style="padding: 20px; text-align: center">
+      <p class="text-base">User is not logged in</p>
     </div>
-    <div class="p-4 ">
-  
+    <div class="p-4">
       <mat-card class="p-2">
         <h1 class="text-xl font-bold mb-2">Take notes</h1>
-  
-  
-      <mat-form-field appearance="fill">
-        <mat-label>Title</mat-label>
-        <input matInput name="noteTitle" [(ngModel)]="noteTitle" />
-      </mat-form-field>
-  
-      <mat-form-field appearance="fill">
-        <mat-label>Note</mat-label>
-        <textarea matInput rows="6" name="noteContent" [(ngModel)]="noteContent"></textarea>
-      </mat-form-field>
-  
-      <button mat-raised-button color="primary" (click)="saveNote()" [disabled]="!noteTitle || !noteContent">{{isEditing? 'Update': 'Save'}}</button>
-    </mat-card>
-  
-  
-  
-  
-  
+
+        <mat-form-field appearance="fill">
+          <mat-label>Title</mat-label>
+          <input matInput name="noteTitle" [(ngModel)]="noteTitle" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Note</mat-label>
+          <textarea matInput rows="6" name="noteContent" [(ngModel)]="noteContent"></textarea>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="saveNote()"
+          [disabled]="!noteTitle || !noteContent"
+        >
+          {{ isEditing ? 'Update' : 'Save' }}
+        </button>
+      </mat-card>
     </div>
   </section>
-  
+
   <section id="saved-notes-section">
     <div class="notes-display-container h-full lg:h-[500px] lg:overflow-y-scroll">
-     
-  
-     <!-- only shows when the notes array is empty -->
-    <div *ngIf="notes.length === 0" style="padding: 20px; text-align: center;">
-      <p>You currently have no notes saved. Start by creating one !</p>
-    </div>
-  
-  
-    @for (note of notes; track note.id) {
-  <mat-card class="note-card m-3">
+      <!-- only shows when the notes array is empty -->
+      <div *ngIf="notes.length === 0" style="padding: 20px; text-align: center">
+        <p>You currently have no notes saved. Start by creating one !</p>
+      </div>
+
+      @for (note of notes; track note.id) {
+      <mat-card class="note-card m-3">
         <mat-card-header>
           <mat-card-title>{{ note.title }}</mat-card-title>
-          <mat-card-subtitle>
-            Created: {{ note.createdAt | date:'short' }}
-          </mat-card-subtitle>
+          <mat-card-subtitle> Created: {{ note.createdAt | date : 'short' }} </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <p>{{ note.content }}</p>
         </mat-card-content>
-  
+
         <mat-card-actions class="grid gap-2">
           <button matButton="filled" (click)="editNote(note.id, note)">Edit</button>
           <button matButton="elevated" (click)="deleteNotes(note.id)">Delete</button>
         </mat-card-actions>
       </mat-card>
-    }
-  
+      }
     </div>
   </section>
-  <hr>
-  
-  
-  
-  
-  
+  <hr />
+
   <router-outlet></router-outlet>
 </div>
