@@ -26,11 +26,24 @@
               <p>User Profile</p>
             </mat-card-title>
             <mat-card-subtitle>
-              <p>All about you</p>
+              <p>
+                Welcome, <strong>{{ userName }}</strong>
+              </p>
             </mat-card-subtitle>
           </mat-card-header>
           <mat-card-content>
-            <div class="w-10 h-10 rounded-full bg-gray-500"></div>
+            @if (formShow) {
+            <mat-form-field>
+              <mat-label for="userDisplayName">Change username</mat-label>
+              <input matInput [(ngModel)]="userName" type="text" name="userDisplayName" id="" />
+            </mat-form-field>
+
+            <button matButton="elevated" (click)="changeUserName(userName)">Save</button>
+            } @else {
+            <button matButton="filled" [hidden]="formShow" type="submit" (click)="formShow = true">
+              Change Username
+            </button>
+            }
 
             <p class="text-base">
               View your account security settings, update your personal profile information, and
