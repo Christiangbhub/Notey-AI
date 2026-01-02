@@ -5,13 +5,14 @@ import { Notes } from './pages/notes/notes';
 import { authGuard } from './auth-guard';
 import { Jokes } from './pages/jokes/jokes';
 import { Home } from './pages/home/home';
+import { Password } from './pages/password/password';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: 'login', component: Login },
-    { path: 'newUser', component: User },
-    { path: 'jokes', component: Jokes },
-    { path: 'home', component: Home },
-    { path: 'notes', component: Notes, canActivate: [authGuard] },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: Login },
+  { path: 'newUser', component: User },
+  { path: 'jokes', component: Jokes },
+  { path: 'home', component: Home },
+  { path: 'password', component: Password },
+  { path: 'notes', component: Notes, canActivate: [authGuard] },
 ];
-

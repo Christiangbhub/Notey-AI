@@ -2,17 +2,26 @@ import { Component } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, NgModel } from '@angular/forms';
-import { MatAnchor } from "@angular/material/button";
+import { MatAnchor } from '@angular/material/button';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, MatAnchor, MatButtonModule, MatIcon, CommonModule],
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatAnchor,
+    MatButtonModule,
+    MatIcon,
+    CommonModule,
+    RouterLink,
+  ],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -21,7 +30,7 @@ export class Login {
   password: string = '';
   hide: boolean = true;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   onLogin() {
     // Handle login logic here
@@ -41,5 +50,4 @@ export class Login {
   onCreateUser() {
     this.router.navigate(['/newUser']);
   }
-
 }
