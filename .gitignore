@@ -41,3 +41,11 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+
+.angular/
+.firebase/
+.github/
+.vscode/
+.dist/
+.node_modules/
