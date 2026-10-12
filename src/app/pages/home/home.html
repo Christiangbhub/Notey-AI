@@ -1,116 +1,117 @@
-<nav class="flex gap-5 p-4 justify-center md:justify-center text-base">
-  <span routerLink="/home" class="font-medium cursor-pointer">📝Notey AI </span>
-  <a routerLink="/login" class="hover:underline hover:text-blue-700 hover:font-medium">Login</a>
-  <a routerLink="/notes" class="hover:underline hover:text-blue-700 hover:font-medium">Notes</a>
-  <a routerLink="/jokes" class="hover:underline hover:text-blue-700 hover:font-medium">Jokes</a>
+<nav class="flex items-center justify-center gap-6 p-4 bg-white shadow-sm">
+  <a routerLink="/home" class="font-semibold text-slate-800">📝 Notey AI</a>
+  <a
+    routerLink="/login"
+    routerLinkActive="font-semibold underline underline-offset-4"
+    class="text-slate-600 hover:text-blue-700"
+    >Login</a
+  >
+  <a
+    routerLink="/notes"
+    routerLinkActive="font-semibold underline underline-offset-4"
+    class="text-slate-600 hover:text-blue-700"
+    >Notes</a
+  >
+  <a
+    routerLink="/jokes"
+    routerLinkActive="font-semibold underline underline-offset-4"
+    class="text-slate-600 hover:text-blue-700"
+    >Jokes</a
+  >
 </nav>
-<div>
-  <div class="bg-blue-200 h-full flex justify-center items-center p-5">
-    <div class="lg:max-w-[70rem]">
-      <div class="home-title my-3 p-3">
-        <h1 class="text-2xl font-medium lg:text-4xl text-center my-2">
-          Welcome to Notey AI project
-        </h1>
-        <p class="text-base">
-          Notei AI is a lightweight web application designed to streamline digital organization
-          while showcasing the power of real-time data fetching. Built with a focus on speed and
-          simplicity, the platform allows users to capture ideas instantly and interact with
-          external data through various custom API integrations.
-        </p>
-      </div>
 
-      <div class="cards grid md:grid-cols-2 md:grid-rows-2 gap-5">
-        <mat-card class="card">
-          <mat-card-header>
-            <mat-card-title>
-              <p>User Profile</p>
-            </mat-card-title>
-            <mat-card-subtitle>
-              <p>
-                Welcome, <strong>{{ userName }}</strong>
-              </p>
-            </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            @if (formShow) {
-            <mat-form-field>
-              <mat-label for="userDisplayName">Change username</mat-label>
-              <input matInput [(ngModel)]="userName" type="text" name="userDisplayName" id="" />
-            </mat-form-field>
+<main class="min-h-screen bg-gradient-to-b from-blue-50 to-blue-200 px-4 py-10">
+  <div class="mx-auto max-w-5xl">
+    <header class="mx-auto max-w-2xl text-center mb-10">
+      <h1 class="text-3xl lg:text-5xl font-bold text-slate-800">Welcome to Notey AI</h1>
+      <p class="mt-4 text-lg text-slate-600">
+        A lightweight web app for capturing ideas instantly and exploring real-time data through
+        custom API integrations.
+      </p>
+    </header>
 
-            <button matButton="elevated" (click)="changeUserName(userName)">Save</button>
-            } @else {
-            <button matButton="filled" [hidden]="formShow" type="submit" (click)="formShow = true">
-              Change Username
-            </button>
-            }
+    <section class="grid gap-6 md:grid-cols-2">
+      <!-- Profile card -->
+      <mat-card>
+        <mat-card-header class="items-center gap-3">
+          <div class="grid h-10 w-10 place-items-center rounded-full bg-blue-100 text-blue-700">
+            <mat-icon>person</mat-icon>
+          </div>
+          <div>
+            <mat-card-title>User Profile</mat-card-title>
+            <mat-card-subtitle
+              >Welcome, <strong>{{ userName }}</strong></mat-card-subtitle
+            >
+          </div>
+        </mat-card-header>
 
-            <p class="text-base">
-              View your account security settings, update your personal profile information, and
-              customize how you interact with the Notei AI platform.
-            </p>
-          </mat-card-content>
-        </mat-card>
-        <mat-card class="card">
-          <mat-card-header>
-            <mat-card-title>
-              <p>Notes</p>
-            </mat-card-title>
-            <mat-card-subtitle>
-              <p>Capture ideas instantly</p>
-            </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <p class="text-base">
-              Create, store, and categorize your digital notes using AI-driven tools designed to
-              keep your ideas structured and easy to find.
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button matButton="filled" routerLink="/notes">Take Notes</button>
-          </mat-card-actions>
-        </mat-card>
-        <mat-card class="card">
-          <mat-card-header>
-            <mat-card-title>
-              <p>About the Developer</p>
-            </mat-card-title>
-            <mat-card-subtitle>
-              <p>The story behind the code</p>
-            </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <img
-              class="w-20 h-20 rounded-full object-cover object-center"
-              src="images/dev.jpg"
-              alt="Christian George"
-            />
-            <p class="text-base">
-              Learn about the developer’s journey, the technical stack used for this project, and
-              the creative vision driving Notei AI forward.
-            </p>
-          </mat-card-content>
-        </mat-card>
-        <mat-card class="card">
-          <mat-card-header>
-            <mat-card-title>
-              <p>FUN APIs</p>
-            </mat-card-title>
-            <mat-card-subtitle>
-              <p>See what else this app can do</p>
-            </mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <p class="text-base">
-              Learn about the developer’s journey, the technical stack used for this project, and
-              the creative vision driving Notei AI forward.
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            <button matButton="elevated" routerLink="/jokes">Try It</button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-    </div>
+        <mat-card-content class="flex-1 pt-4">
+          <p class="text-slate-600">
+            View your account security settings, update your profile, and customize how you use
+            Notey AI.
+          </p>
+          @if (formShow) {
+            <div class="mt-4 flex items-start gap-2">
+              <mat-form-field class="flex-1">
+                <mat-label>New username</mat-label>
+                <input matInput [(ngModel)]="draftName" />
+              </mat-form-field>
+              <button matButton="filled" (click)="changeUserName(draftName)">Save</button>
+            </div>
+          }
+        </mat-card-content>
+
+        <mat-card-actions>
+          @if (!formShow) {
+            <button matButton="outlined" (click)="formShow = true">Change username</button>
+          }
+        </mat-card-actions>
+      </mat-card>
+
+      <!-- Notes card -->
+      <mat-card>
+        <mat-card-header class="items-center gap-3">
+          <div class="grid h-10 w-10 place-items-center rounded-full bg-blue-100 text-blue-700">
+            <mat-icon>edit_note</mat-icon>
+          </div>
+          <div>
+            <mat-card-title>Notes</mat-card-title>
+            <mat-card-subtitle>Capture ideas instantly</mat-card-subtitle>
+          </div>
+        </mat-card-header>
+        <mat-card-content class="flex-1 pt-4">
+          <p class="text-slate-600">
+            Create, store, and categorize your notes with AI-driven tools that keep your ideas easy
+            to find.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a matButton="filled" routerLink="/notes">Take Notes</a>
+        </mat-card-actions>
+      </mat-card>
+
+      <!-- About the Developer and Fun APIs: same pattern, you build these -->
+
+      <mat-card>
+        <mat-card-header>
+          <div class="grid h-10 w-10 place-items-center rounded-full bg-blue-100 text-blue-700">
+            <mat-icon>sports_esports</mat-icon>
+          </div>
+          <div>
+            <mat-card-title>Jokes API</mat-card-title>
+            <mat-card-subtitle>Find some nice jokes</mat-card-subtitle>
+          </div>
+        </mat-card-header>
+        <mat-card-content class="flex-1 pt-4">
+          <p class="text-slate-600">
+            Create, store, and categorize your notes with AI-driven tools that keep your ideas easy
+            to find.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a matButton="filled" routerLink="/jokes">Get Jokes</a>
+        </mat-card-actions>
+      </mat-card>
+    </section>
   </div>
-</div>
+</main>

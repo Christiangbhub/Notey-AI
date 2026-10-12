@@ -31,6 +31,7 @@ export class Home implements OnInit {
   userName: string | null = '';
   formShow: boolean = false;
   userSave: boolean = false;
+  draftName = '';
 
   ngOnInit(): void {
     this.loadUserData();

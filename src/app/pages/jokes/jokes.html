@@ -1,23 +1,22 @@
-<nav class="flex gap-5 p-4 justify-center md:justify-center text-base">
-  <span routerLink="/home" class="font-medium cursor-pointer">📝Notey AI </span>
-  <a routerLink="/login" class="hover:underline hover:text-blue-700 hover:font-medium">Login</a>
-  <a routerLink="/notes" class="hover:underline hover:text-blue-700 hover:font-medium">Notes</a>
-  <a routerLink="/jokes" class="hover:underline hover:text-blue-700 hover:font-medium">Jokes</a>
-</nav>
+<app-navbar></app-navbar>
 
-<div class="api-calls p-4 mx-auto bg-blue-100 h-full w-[100%] flex items-center justify-center">
-  <div class="lg:max-w-xl text-center">
-    <div style="font-size: 10rem">🤣</div>
-    <h2 class="text-lg font-bold my-3">Random Joke api</h2>
-    <button matButton="elevated" class="my-3" (click)="fetchJoke()">Get a Random joke</button>
-    @if (joke) {
-    <mat-card>
-      <mat-card-content>
-        <p>
-          {{ joke.setup }} ... <strong>{{ joke.punchline }}</strong>
-        </p>
-      </mat-card-content>
-    </mat-card>
+<main class="grid min-h-screen place-items-center bg-gradient-to-b from-blue-50 to-blue-200 p-4">
+  <div class="w-full max-w-xl text-center">
+    <div class="text-7xl sm:text-8xl" aria-hidden="true">🤣</div>
+    <h1 class="mt-4 text-2xl font-bold text-slate-800">Random joke</h1>
+    <p class="mt-1 text-slate-500">Press the button for a new one.</p>
+
+    <button matButton="filled" class="mt-6" (click)="fetchJoke()" [disabled]="loading()">
+      {{ joke() ? 'Another one!' : 'Get a joke' }}
+    </button>
+
+    @if (joke(); as j) {
+      <mat-card class="mt-6">
+        <mat-card-content class="p-4">
+          <p class="text-lg text-slate-700">{{ j.setup }}</p>
+          <p class="mt-3 text-lg font-semibold text-blue-700">{{ j.punchline }}</p>
+        </mat-card-content>
+      </mat-card>
     }
   </div>
-</div>
+</main>

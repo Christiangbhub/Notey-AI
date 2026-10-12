@@ -11,7 +11,7 @@ import {
   deleteDoc,
   updateDoc,
 } from 'firebase/firestore';
-import { auth, db } from '../../firebase'; // Import your exported Auth instance
+import { firebaseAuth, db } from '../../firebase'; // Import your exported Auth instance
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Data, RouterModule } from '@angular/router';
@@ -24,6 +24,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { NgZone } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { DataService } from '../../data-service';
+import { Navbar } from '../../shared/navbar/navbar';
 
 interface Note {
   id: string; // The Firestore Document ID
@@ -44,6 +45,7 @@ interface Note {
     MatIconModule,
     CommonModule,
     DatePipe,
+    Navbar,
   ],
   templateUrl: './notes.html',
   styleUrl: './notes.css',
@@ -57,15 +59,23 @@ export class Notes implements OnInit, OnDestroy {
   isEditing: Boolean = false;
   editId: string | null = '';
 
+  cancelEdit() {
+    this.isEditing = false;
+  }
+
   // // Variable to store the unsubscribe function from onSnapshot
   private unsubscribeNotes: (() => void) | undefined;
 
-  constructor(private zone: NgZone, private cdr: ChangeDetectorRef, private data: DataService) {}
+  constructor(
+    private zone: NgZone,
+    private cdr: ChangeDetectorRef,
+    private data: DataService,
+  ) {}
 
   ngOnInit() {
     // Start listening for notes when the component loads
 
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(firebaseAuth, (user) => {
       if (user) {
         console.log('User verified:', user.uid);
         this.fetchNotes();
@@ -86,7 +96,7 @@ export class Notes implements OnInit, OnDestroy {
   }
 
   async saveNote() {
-    const user = auth.currentUser; // Get the currently signed-in user
+    const user = firebaseAuth.currentUser; // Get the currently signed-in user
 
     if (user) {
       const uid = user.uid;
@@ -139,7 +149,7 @@ export class Notes implements OnInit, OnDestroy {
   }
 
   fetchNotes() {
-    const user = auth.currentUser;
+    const user = firebaseAuth.currentUser;
     // if user is not logged in
     if (!user) {
       return;
@@ -179,12 +189,12 @@ export class Notes implements OnInit, OnDestroy {
       },
       (error) => {
         console.error('Error fetching notes:', error);
-      }
+      },
     );
   }
 
   async deleteNotes(noteId: string) {
-    const user = auth.currentUser;
+    const user = firebaseAuth.currentUser;
 
     // if user is not logged in
     if (!user) {

@@ -1,56 +1,76 @@
-<div class="bg-blue-300 w-full h-full flex flex-col items-center justify-center">
-  <div class="login-form bg-white gap-1 shadow-lg w-full md:w-1/2 mx-auto p-4 rounded-lg">
-    <h1 class="text-3xl text-center font-bold mb-6">Login Form</h1>
-    <p class="text-center">
-      To use Notey-AI, you have to login, or
-      <a matButton [routerLink]="['/newUser']">create an account</a>
-    </p>
+<main
+  class="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-blue-100 via-blue-200 to-indigo-300"
+>
+  <section class="w-full max-w-md bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+    <header class="text-center mb-6">
+      <h1 class="text-3xl font-bold text-slate-800">Welcome back</h1>
+      <p class="mt-2 text-slate-500">Log in to continue to Notey-AI</p>
+    </header>
 
-    <form class="example-form">
+    <form #loginForm="ngForm" (ngSubmit)="onLogin()" novalidate>
       <!-- Email -->
-      <mat-form-field class="example-full-width mb-4">
+      <mat-form-field class="w-full">
         <mat-label>Email</mat-label>
-
+        <mat-icon matPrefix>mail</mat-icon>
         <input
           matInput
-          placeholder="Ex. email.com"
-          [(ngModel)]="email"
-          required
           type="email"
           name="email"
-        /><mat-icon>mail</mat-icon>
+          autocomplete="email"
+          placeholder="name@example.com"
+          [(ngModel)]="email"
+          #emailCtrl="ngModel"
+          required
+          email
+        />
+        @if (emailCtrl.hasError('required')) {
+          <mat-error>Email is required</mat-error>
+        } @else if (emailCtrl.hasError('email')) {
+          <mat-error>Enter a valid email address</mat-error>
+        }
       </mat-form-field>
 
       <!-- Password -->
-      <mat-form-field class="example-full-width mb-4">
+      <mat-form-field class="w-full">
         <mat-label>Password</mat-label>
+        <mat-icon matPrefix>lock</mat-icon>
         <input
           matInput
           [type]="hide ? 'password' : 'text'"
-          placeholder="Ex. ********"
-          [(ngModel)]="password"
-          required
           name="password"
-        /><mat-icon>lock</mat-icon>
-        <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
+          autocomplete="current-password"
+          [(ngModel)]="password"
+          #passwordCtrl="ngModel"
+          required
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          type="button"
+          (click)="hide = !hide"
+          [attr.aria-label]="hide ? 'Show password' : 'Hide password'"
+        >
           <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
+        <mat-error>Password is required</mat-error>
       </mat-form-field>
 
-      <!-- Login with google button -->
-      <a matButton class="w-full my-3" type="button" [routerLink]="['/password']">
-        Forgot password
-      </a>
+      <div class="flex justify-end mb-4">
+        <a routerLink="/password" class="text-sm text-blue-600 hover:underline">
+          Forgot password?
+        </a>
+      </div>
 
-      <!-- Login button -->
-      <button matButton="filled" color="primary" class="w-full" type="button" (click)="onLogin()">
+      <button matButton="filled" type="submit" class="w-full" [disabled]="loginForm.invalid">
         Login
       </button>
-
-      <!-- create user button -->
-      <button matButton="outlined" class="w-full my-3" type="button" (click)="onCreateUser()">
-        Create User
-      </button>
     </form>
-  </div>
-</div>
+
+    <p class="mt-6 text-center text-sm text-slate-600">
+      New here?
+      <a routerLink="/newUser" class="font-medium text-blue-600 hover:underline">
+        Create an account
+      </a>
+    </p>
+  </section>
+</main>
